@@ -1,5 +1,5 @@
 ## Pull the mysql:5.7 image
-FROM mysql:5.7
+FROM mysql:latest
 
 ## The maintainer name and email
 MAINTAINER arsalan tariq <arsalan.tariq@holodeck.xyz>
