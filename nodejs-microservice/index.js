@@ -38,6 +38,9 @@ await new Promise(res=> setTimeout(res, 10000));
 }
 }
 
+let retrie=5;
+while(retrie){
+try{
 connection.connect((err) => {
 	if (err) {
 		console.error('error connecting mysql: ', err);
@@ -52,6 +55,16 @@ connection.connect((err) => {
 		});
 	}
 });
+break;
+} catch(err){
+console.log(err);
+retrie -= 1;
+console.log(`retrie left : ${retries}`);
+//wait 10 sec
+await new Promise(res=> setTimeout(res, 10000));
+
+}
+}
 
 // home page
 app.get('/', (req, res) => {
