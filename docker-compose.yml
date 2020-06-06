@@ -9,11 +9,11 @@ services:
     ports:
       - "6603:3306"
 
-web:
-  build: ./nodejs-microservice
+  web:
+    build: ./nodejs-microservice
 
-  depends_on:
-    - db
+    depends_on:
+      - db
 
-  ports:
-    - "4000:4000"
+    ports:
+      - "4000:4000"
