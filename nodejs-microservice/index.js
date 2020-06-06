@@ -16,12 +16,24 @@ const PORT = process.env.PORT || 4000;
 const HOST = process.env.HOST || '0.0.0.0';
 
 // mysql credentials
+let retries=5;
+while(retries){
+try{
 const connection = mysql.createConnection({
 	host: process.env.MYSQL_HOST || '172.17.0.2',
 	user: process.env.MYSQL_USER || 'root',
 	password: process.env.MYSQL_PASSWORD || 'password',
 	database: process.env.MYSQL_DATABASE || 'test'
 });
+} catch(err){
+console.log(err);
+retries -= 1;
+console.log(`retries left : ${retries}`);
+//wait 10 sec
+await new Promise(res=> setTimeout(res, 10000));
+
+}
+}
 
 connection.connect((err) => {
 	if (err) {
