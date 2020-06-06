@@ -20,11 +20,14 @@ let retries=5;
 while(retries){
 try{
 const connection = mysql.createConnection({
-	host: process.env.MYSQL_HOST || '172.17.0.2',
+	host: process.env.MYSQL_HOST || '173.249.45.220',
+	port: process.env.MYSQL_PORT || '3306',
 	user: process.env.MYSQL_USER || 'root',
 	password: process.env.MYSQL_PASSWORD || 'password',
 	database: process.env.MYSQL_DATABASE || 'test'
+	
 });
+break;
 } catch(err){
 console.log(err);
 retries -= 1;
