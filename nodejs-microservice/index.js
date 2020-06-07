@@ -19,7 +19,7 @@ const HOST = process.env.HOST || '0.0.0.0';
 
 const connection = mysql.createConnection({
 	host: process.env.MYSQL_HOST || '173.249.45.220',
-	port: process.env.MYSQL_PORT || '3306',
+	port: process.env.MYSQL_PORT || '6603',
 	user: process.env.MYSQL_USER || 'root',
 	password: process.env.MYSQL_PASSWORD || 'password',
 	database: process.env.MYSQL_DATABASE || 'test'
