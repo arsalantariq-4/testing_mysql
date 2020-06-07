@@ -16,9 +16,7 @@ const PORT = process.env.PORT || 4000;
 const HOST = process.env.HOST || '0.0.0.0';
 
 // mysql credentials
-let retries=5;
-while(retries){
-try{
+
 const connection = mysql.createConnection({
 	host: process.env.MYSQL_HOST || '173.249.45.220',
 	port: process.env.MYSQL_PORT || '3306',
@@ -27,20 +25,9 @@ const connection = mysql.createConnection({
 	database: process.env.MYSQL_DATABASE || 'test'
 	
 });
-break;
-} catch(err){
-console.log(err);
-retries -= 1;
-console.log(`retries left : ${retries}`);
-//wait 10 sec
-await new Promise(res=> setTimeout(res, 10000));
 
-}
-}
 
-let retrie=5;
-while(retrie){
-try{
+
 connection.connect((err) => {
 	if (err) {
 		console.error('error connecting mysql: ', err);
@@ -55,16 +42,7 @@ connection.connect((err) => {
 		});
 	}
 });
-break;
-} catch(err){
-console.log(err);
-retrie -= 1;
-console.log(`retrie left : ${retries}`);
-//wait 10 sec
-await new Promise(res=> setTimeout(res, 10000));
 
-}
-}
 
 // home page
 app.get('/', (req, res) => {
